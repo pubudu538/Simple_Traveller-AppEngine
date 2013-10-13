@@ -1,0 +1,229 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://simpletravellerwebapp.appspot.com/_ah/api",
+  "name" : "placeinendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://simpletravellerwebapp.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "pubci.com",
+  "ownerName" : "pubci.com",
+  "packagePath" : "simple_traveller",
+  "methods" : {
+    "placeinendpoint.listPlaceIn" : {
+      "path" : "placein",
+      "httpMethod" : "GET",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.PlaceInEndpoint.listPlaceIn",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "placeinendpoint.removePlaceIn" : {
+      "path" : "placein/{id}",
+      "httpMethod" : "DELETE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.PlaceInEndpoint.removePlaceIn",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "placeinendpoint.insertPlaceIn" : {
+      "path" : "placein",
+      "httpMethod" : "POST",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.PlaceInEndpoint.insertPlaceIn",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "placeinendpoint.getPlaceIn" : {
+      "path" : "placein/{id}",
+      "httpMethod" : "GET",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.PlaceInEndpoint.getPlaceIn",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "placeinendpoint.updatePlaceIn" : {
+      "path" : "placein",
+      "httpMethod" : "PUT",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.PlaceInEndpoint.updatePlaceIn",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_PlaceIn" : {
+        "id" : "CollectionResponse_PlaceIn",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "PlaceIn"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "PlaceIn" : {
+        "id" : "PlaceIn",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "tripKey" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "integer"
+          },
+          "latitude" : {
+            "type" : "number"
+          },
+          "longitude" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.pubci.simple_traveller.PlaceInEndpoint.listPlaceIn" : {
+        "response" : {
+          "$ref" : "CollectionResponse_PlaceIn"
+        }
+      },
+      "com.pubci.simple_traveller.PlaceInEndpoint.removePlaceIn" : {
+      },
+      "com.pubci.simple_traveller.PlaceInEndpoint.insertPlaceIn" : {
+        "request" : {
+          "$ref" : "PlaceIn"
+        },
+        "response" : {
+          "$ref" : "PlaceIn"
+        }
+      },
+      "com.pubci.simple_traveller.PlaceInEndpoint.getPlaceIn" : {
+        "response" : {
+          "$ref" : "PlaceIn"
+        }
+      },
+      "com.pubci.simple_traveller.PlaceInEndpoint.updatePlaceIn" : {
+        "request" : {
+          "$ref" : "PlaceIn"
+        },
+        "response" : {
+          "$ref" : "PlaceIn"
+        }
+      }
+    }
+  }
+}

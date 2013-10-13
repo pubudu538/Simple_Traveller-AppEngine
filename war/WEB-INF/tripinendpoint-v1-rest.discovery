@@ -1,0 +1,246 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"_SAkL5LfohOjTvNX8memTU9s4HI/B9smKHvWQG4k1ohxmAAiNmvoG-Q\"",
+ "discoveryVersion": "v1",
+ "id": "tripinendpoint:v1",
+ "name": "tripinendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "pubci.com",
+ "ownerName": "pubci.com",
+ "packagePath": "simple_traveller",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://simpletravellerwebapp.appspot.com/_ah/api/tripinendpoint/v1/",
+ "basePath": "/_ah/api/tripinendpoint/v1/",
+ "rootUrl": "https://simpletravellerwebapp.appspot.com/_ah/api/",
+ "servicePath": "tripinendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_TripIn": {
+   "id": "CollectionResponse_TripIn",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "TripIn"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Key": {
+   "id": "Key",
+   "type": "object",
+   "properties": {
+    "appId": {
+     "type": "string"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  },
+  "TripIn": {
+   "id": "TripIn",
+   "type": "object",
+   "properties": {
+    "date": {
+     "type": "string"
+    },
+    "days": {
+     "type": "string"
+    },
+    "key": {
+     "$ref": "Key"
+    },
+    "location": {
+     "type": "string"
+    },
+    "title": {
+     "type": "string"
+    },
+    "totalExp": {
+     "type": "string"
+    },
+    "travel": {
+     "type": "string"
+    },
+    "tripKey": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getTripIn": {
+   "id": "tripinendpoint.getTripIn",
+   "path": "tripin/{id}",
+   "httpMethod": "GET",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "response": {
+    "$ref": "TripIn"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertTripIn": {
+   "id": "tripinendpoint.insertTripIn",
+   "path": "tripin",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "TripIn",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "TripIn"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listTripIn": {
+   "id": "tripinendpoint.listTripIn",
+   "path": "tripin",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "response": {
+    "$ref": "CollectionResponse_TripIn"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "removeTripIn": {
+   "id": "tripinendpoint.removeTripIn",
+   "path": "tripin/{id}",
+   "httpMethod": "DELETE",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateTripIn": {
+   "id": "tripinendpoint.updateTripIn",
+   "path": "tripin",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "TripIn",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "TripIn"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

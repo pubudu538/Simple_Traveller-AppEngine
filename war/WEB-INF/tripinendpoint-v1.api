@@ -1,0 +1,232 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://simpletravellerwebapp.appspot.com/_ah/api",
+  "name" : "tripinendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://simpletravellerwebapp.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "pubci.com",
+  "ownerName" : "pubci.com",
+  "packagePath" : "simple_traveller",
+  "methods" : {
+    "tripinendpoint.insertTripIn" : {
+      "path" : "tripin",
+      "httpMethod" : "POST",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.TripInEndpoint.insertTripIn",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tripinendpoint.getTripIn" : {
+      "path" : "tripin/{id}",
+      "httpMethod" : "GET",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.TripInEndpoint.getTripIn",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tripinendpoint.removeTripIn" : {
+      "path" : "tripin/{id}",
+      "httpMethod" : "DELETE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.TripInEndpoint.removeTripIn",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "tripinendpoint.updateTripIn" : {
+      "path" : "tripin",
+      "httpMethod" : "PUT",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.TripInEndpoint.updateTripIn",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tripinendpoint.listTripIn" : {
+      "path" : "tripin",
+      "httpMethod" : "GET",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.pubci.simple_traveller.TripInEndpoint.listTripIn",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "TripIn" : {
+        "id" : "TripIn",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "location" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          },
+          "days" : {
+            "type" : "string"
+          },
+          "travel" : {
+            "type" : "string"
+          },
+          "tripKey" : {
+            "type" : "string"
+          },
+          "totalExp" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_TripIn" : {
+        "id" : "CollectionResponse_TripIn",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "TripIn"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.pubci.simple_traveller.TripInEndpoint.insertTripIn" : {
+        "request" : {
+          "$ref" : "TripIn"
+        },
+        "response" : {
+          "$ref" : "TripIn"
+        }
+      },
+      "com.pubci.simple_traveller.TripInEndpoint.getTripIn" : {
+        "response" : {
+          "$ref" : "TripIn"
+        }
+      },
+      "com.pubci.simple_traveller.TripInEndpoint.removeTripIn" : {
+      },
+      "com.pubci.simple_traveller.TripInEndpoint.updateTripIn" : {
+        "request" : {
+          "$ref" : "TripIn"
+        },
+        "response" : {
+          "$ref" : "TripIn"
+        }
+      },
+      "com.pubci.simple_traveller.TripInEndpoint.listTripIn" : {
+        "response" : {
+          "$ref" : "CollectionResponse_TripIn"
+        }
+      }
+    }
+  }
+}
